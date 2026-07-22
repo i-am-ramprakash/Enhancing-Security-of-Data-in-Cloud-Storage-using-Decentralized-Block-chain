@@ -1,0 +1,28 @@
+<header>
+  <strong>Secure Cloud Storage</strong>
+  <nav>
+    <c:choose>
+      <c:when test="${sessionScope.role == 'OWNER'}">
+        <a href="${pageContext.request.contextPath}/owner/home">Home</a>
+        <a href="${pageContext.request.contextPath}/owner/upload">Upload</a>
+        <a href="${pageContext.request.contextPath}/owner/files">My files</a>
+        <a href="${pageContext.request.contextPath}/owner/requests">Requests</a>
+      </c:when>
+      <c:when test="${sessionScope.role == 'USER'}">
+        <a href="${pageContext.request.contextPath}/user/home">Home</a>
+        <a href="${pageContext.request.contextPath}/user/search">Search</a>
+        <a href="${pageContext.request.contextPath}/user/requests">My requests</a>
+      </c:when>
+      <c:when test="${sessionScope.role == 'ADMIN'}">
+        <a href="${pageContext.request.contextPath}/admin/home">Home</a>
+        <a href="${pageContext.request.contextPath}/admin/accounts?role=OWNER">Owners</a>
+        <a href="${pageContext.request.contextPath}/admin/accounts?role=USER">Users</a>
+        <a href="${pageContext.request.contextPath}/admin/audit">Integrity audit</a>
+      </c:when>
+    </c:choose>
+    <form class="inline" action="${pageContext.request.contextPath}/Logout" method="post">
+      <input type="hidden" name="csrf" value="${sessionScope.csrfToken}">
+      <button class="secondary" type="submit">Sign out</button>
+    </form>
+  </nav>
+</header>

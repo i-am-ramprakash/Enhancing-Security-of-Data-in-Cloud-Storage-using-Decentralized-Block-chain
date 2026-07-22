@@ -1,0 +1,3 @@
+<c:if test="${not empty requestScope.flash}">
+  <div class="flash ${requestScope.flashType == 'success' ? 'success' : 'error'}"><c:out value="${requestScope.flash}"/></div>
+</c:if>

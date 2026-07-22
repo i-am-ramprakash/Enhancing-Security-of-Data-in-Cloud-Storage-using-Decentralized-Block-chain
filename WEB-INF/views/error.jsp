@@ -1,0 +1,2 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Request failed</title><link rel="stylesheet" href="${pageContext.request.contextPath}/app.css"></head><body><main><section class="card narrow"><h1>Request failed</h1><p>The request could not be completed.</p><p><a href="${pageContext.request.contextPath}/index.html">Return home</a></p></section></main></body></html>
