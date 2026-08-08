@@ -1,2 +1,54 @@
 <%@ page contentType="text/html;charset=UTF-8" %><%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Owner sign in</title><link rel="stylesheet" href="app.css"></head><body><main><section class="card narrow"><h1>Owner sign in</h1><c:if test="${not empty sessionScope.flash}"><div class="flash ${sessionScope.flashType == 'success' ? 'success' : 'error'}"><c:out value="${sessionScope.flash}"/></div><c:remove var="flash" scope="session"/><c:remove var="flashType" scope="session"/></c:if><form action="Owner" method="post"><input type="hidden" name="csrf" value="${sessionScope.csrfToken}"><label>Email <input type="email" name="email" maxlength="254" autocomplete="username" required></label><label>Password <input type="password" name="password" maxlength="128" autocomplete="current-password" required></label><button type="submit">Sign in</button></form><p><a href="DataOwnerRegister.jsp">Create owner account</a> · <a href="index.html">Back</a></p></section></main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Data Owner Sign In — Secure Cloud Storage</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <header>
+        <strong><a href="index.html" style="color:white;text-decoration:none;">Secure Cloud Storage</a></strong>
+        <nav>
+            <a href="DataOwnerRegister.jsp">Register Owner</a>
+            <a href="DataUserLogin.jsp">User Sign In</a>
+        </nav>
+    </header>
+    <main>
+        <section class="card narrow">
+            <div class="auth-banner-header" style="background-image: url('images/security_banner.png');">
+                <h2 class="auth-banner-title">📤 Owner Sign In</h2>
+            </div>
+
+            <p class="muted" style="margin-top: -0.5rem; margin-bottom: 1.25rem;">Sign in to your Data Owner portal to manage encrypted files and access grants.</p>
+
+            <c:if test="${not empty sessionScope.flash}">
+                <div class="flash ${sessionScope.flashType == 'success' ? 'success' : 'error'}">
+                    <c:out value="${sessionScope.flash}"/>
+                </div>
+                <c:remove var="flash" scope="session"/>
+                <c:remove var="flashType" scope="session"/>
+            </c:if>
+
+            <form action="Owner" method="post">
+                <input type="hidden" name="csrf" value="${sessionScope.csrfToken}">
+                
+                <label>Email Address
+                    <input type="email" name="email" maxlength="254" placeholder="owner@company.com" autocomplete="username" required>
+                </label>
+                
+                <label>Password
+                    <input type="password" name="password" maxlength="128" placeholder="••••••••••••" autocomplete="current-password" required>
+                </label>
+                
+                <button type="submit">Sign In to Owner Portal</button>
+            </form>
+            
+            <p style="text-align: center; margin-top: 1.5rem; margin-bottom: 0;">
+                Don't have an owner account? <a href="DataOwnerRegister.jsp"><strong>Register here</strong></a>
+            </p>
+        </section>
+    </main>
+</body>
+</html>
