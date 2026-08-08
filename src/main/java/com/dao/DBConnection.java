@@ -23,6 +23,7 @@ public final class DBConnection {
                 current = dataSource;
                 if (current == null) {
                     HikariConfig config = new HikariConfig();
+                    config.setDriverClassName(env("DB_DRIVER", "com.mysql.cj.jdbc.Driver"));
                     config.setJdbcUrl(env("DB_URL", "jdbc:mysql://localhost:3306/secure_cloud?serverTimezone=UTC"));
                     config.setUsername(env("DB_USER", "secure_cloud"));
                     config.setPassword(requiredEnv("DB_PASSWORD"));

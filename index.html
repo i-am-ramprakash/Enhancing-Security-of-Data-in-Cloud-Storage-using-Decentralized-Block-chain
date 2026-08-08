@@ -1,1 +1,64 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Secure Cloud Storage</title><link rel="stylesheet" href="app.css"></head><body><header><strong>Secure Cloud Storage</strong></header><main class="hero"><section class="card"><h1>Encrypted, access-controlled file sharing</h1><p>Files are protected with authenticated encryption, owner-approved grants, and a verifiable integrity audit.</p><div class="actions"><a class="button" href="DataOwnerLogin.jsp">Owner sign in</a><a class="button" href="DataUserLogin.jsp">User sign in</a><a class="button secondary" href="Admin.jsp">Administrator</a></div><p><a href="DataOwnerRegister.jsp">Register an owner</a> · <a href="DataUserRegister.jsp">Register a user</a></p></section></main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Secure Cloud Storage — Zero-Trust Encrypted Cloud Platform</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <header>
+        <strong>Secure Cloud Storage</strong>
+        <nav>
+            <a href="DataOwnerLogin.jsp">Data Owner</a>
+            <a href="DataUserLogin.jsp">Data User</a>
+            <a href="Admin.jsp">Administrator</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-gradient">
+            <h1>Encrypted, Access-Controlled Cloud Storage</h1>
+            <p>Files are protected with authenticated AES-256-GCM envelope encryption, owner-approved access grants, and a tamper-evident audit ledger.</p>
+            <div class="actions">
+                <a class="button" href="DataOwnerLogin.jsp">Owner Sign In</a>
+                <a class="button" href="DataUserLogin.jsp">User Sign In</a>
+                <a class="button secondary" href="Admin.jsp">Administrator</a>
+            </div>
+        </section>
+
+        <h2 style="text-align: center; margin-bottom: 1.5rem;">Select Your Portal Role</h2>
+
+        <section class="portal-grid">
+            <div class="portal-card">
+                <div class="portal-icon">📤</div>
+                <h3>Data Owner Portal</h3>
+                <p>Upload files with zero-trust AES-256-GCM encryption, manage file access requests, and approve/deny permissions.</p>
+                <div class="actions">
+                    <a class="button" href="DataOwnerLogin.jsp">Owner Sign In</a>
+                    <a class="button secondary" href="DataOwnerRegister.jsp">Register Owner</a>
+                </div>
+            </div>
+
+            <div class="portal-card">
+                <div class="portal-icon">🔑</div>
+                <h3>Data User Portal</h3>
+                <p>Search shared cloud files, submit access requests to file owners, and download/decrypt files once approved.</p>
+                <div class="actions">
+                    <a class="button" href="DataUserLogin.jsp">User Sign In</a>
+                    <a class="button secondary" href="DataUserRegister.jsp">Register User</a>
+                </div>
+            </div>
+
+            <div class="portal-card">
+                <div class="portal-icon">🛡️</div>
+                <h3>Administrator Portal</h3>
+                <p>Manage system account directories, monitor platform activity, and verify the cryptographic HMAC-SHA-256 integrity audit ledger.</p>
+                <div class="actions">
+                    <a class="button secondary" href="Admin.jsp">Admin Sign In</a>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
