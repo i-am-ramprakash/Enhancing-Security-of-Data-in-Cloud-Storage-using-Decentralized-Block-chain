@@ -15,8 +15,16 @@ public class FileUpload extends HttpServlet {
             Part part = request.getPart("file");
             if (part == null || part.getSize() == 0) throw new IllegalArgumentException("Choose a non-empty file");
             String submitted = part.getSubmittedFileName();
-            String filename = Input.safeFilename(request.getParameter("filename") == null
-                    || request.getParameter("filename").isBlank() ? submitted : request.getParameter("filename"));
+            String rawFilename = request.getParameter("filename");
+            if (rawFilename == null || rawFilename.isBlank()) {
+                rawFilename = submitted;
+            } else if (submitted != null && submitted.contains(".")) {
+                String ext = submitted.substring(submitted.lastIndexOf('.'));
+                if (!rawFilename.toLowerCase().endsWith(ext.toLowerCase())) {
+                    rawFilename += ext;
+                }
+            }
+            String filename = Input.safeFilename(rawFilename);
             String description = Input.text(request.getParameter("content"), 2_000);
             String contentType = part.getContentType() == null ? "application/octet-stream"
                     : Input.text(part.getContentType(), 150);

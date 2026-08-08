@@ -16,7 +16,8 @@ public class ViewData extends HttpServlet {
             byte[] plaintext = FileCrypto.decrypt(file.encryptedFile(), FileCrypto.masterKeyFromEnvironment());
             ServletSupport.REPOSITORY.recordDownload(file.id(), ServletSupport.accountId(request));
             String filename = file.filename().replace("\"", "_").replace("\\", "_");
-            response.setContentType("application/octet-stream");
+            String mimeType = (file.contentType() != null && !file.contentType().isBlank()) ? file.contentType() : "application/octet-stream";
+            response.setContentType(mimeType);
             response.setHeader("Content-Disposition", "attachment; filename=\"" + filename + "\"");
             response.setContentLengthLong(plaintext.length);
             response.getOutputStream().write(plaintext);
