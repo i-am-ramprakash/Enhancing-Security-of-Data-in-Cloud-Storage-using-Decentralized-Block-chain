@@ -3,37 +3,42 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Secure Cloud Storage — Zero-Trust Encrypted Cloud Platform</title>
+    <title>Secure Cloud Storage — Enterprise File Encryption & Sharing</title>
     <link rel="stylesheet" href="app.css">
 </head>
 <body>
     <header>
         <strong>Secure Cloud Storage</strong>
         <nav>
-            <a href="DataOwnerLogin.jsp">Data Owner</a>
-            <a href="DataUserLogin.jsp">Data User</a>
+            <a href="DataOwnerLogin.jsp">Data Owner Portal</a>
+            <a href="DataUserLogin.jsp">Data User Portal</a>
             <a href="Admin.jsp">Administrator</a>
         </nav>
     </header>
 
     <main>
-        <section class="hero-gradient">
-            <h1>Encrypted, Access-Controlled Cloud Storage</h1>
-            <p>Files are protected with authenticated AES-256-GCM envelope encryption, owner-approved access grants, and a tamper-evident audit ledger.</p>
-            <div class="actions">
-                <a class="button" href="DataOwnerLogin.jsp">Owner Sign In</a>
-                <a class="button" href="DataUserLogin.jsp">User Sign In</a>
-                <a class="button secondary" href="Admin.jsp">Administrator</a>
+        <section class="hero-corporate">
+            <div>
+                <h1>Encrypted, Access-Controlled Cloud Storage Platform</h1>
+                <p>Enterprise-grade zero-trust file storage protected with authenticated AES-256-GCM envelope encryption, owner-controlled access permissions, and a tamper-evident audit ledger.</p>
+                <div class="actions">
+                    <a class="button" href="DataOwnerLogin.jsp">Data Owner Sign In</a>
+                    <a class="button" href="DataUserLogin.jsp">Data User Sign In</a>
+                    <a class="button secondary" href="Admin.jsp">Administrator</a>
+                </div>
+            </div>
+            <div>
+                <img src="images/cloud_vault_hero.png" alt="Secure Data Vault" class="hero-img">
             </div>
         </section>
 
-        <h2 style="text-align: center; margin-bottom: 1.5rem;">Select Your Portal Role</h2>
+        <h2 style="margin-bottom: 1.25rem;">Enterprise Access Portals</h2>
 
         <section class="portal-grid">
             <div class="portal-card">
                 <div class="portal-icon">📤</div>
                 <h3>Data Owner Portal</h3>
-                <p>Upload files with zero-trust AES-256-GCM encryption, manage file access requests, and approve/deny permissions.</p>
+                <p>Upload files with zero-trust AES-256-GCM envelope encryption, manage access requests, and approve/deny user permissions.</p>
                 <div class="actions">
                     <a class="button" href="DataOwnerLogin.jsp">Owner Sign In</a>
                     <a class="button secondary" href="DataOwnerRegister.jsp">Register Owner</a>
@@ -43,7 +48,7 @@
             <div class="portal-card">
                 <div class="portal-icon">🔑</div>
                 <h3>Data User Portal</h3>
-                <p>Search shared cloud files, submit access requests to file owners, and download/decrypt files once approved.</p>
+                <p>Search shared cloud files, submit permission requests to file owners, and download/decrypt files once approved.</p>
                 <div class="actions">
                     <a class="button" href="DataUserLogin.jsp">User Sign In</a>
                     <a class="button secondary" href="DataUserRegister.jsp">Register User</a>
@@ -53,7 +58,7 @@
             <div class="portal-card">
                 <div class="portal-icon">🛡️</div>
                 <h3>Administrator Portal</h3>
-                <p>Manage system account directories, monitor platform activity, and verify the cryptographic HMAC-SHA-256 integrity audit ledger.</p>
+                <p>Monitor platform activity, inspect account directories, and audit the cryptographic HMAC-SHA-256 integrity ledger.</p>
                 <div class="actions">
                     <a class="button secondary" href="Admin.jsp">Admin Sign In</a>
                 </div>
