@@ -18,7 +18,8 @@ public class ViewData extends HttpServlet {
             String filename = file.filename().replace("\"", "_").replace("\\", "_");
             String mimeType = (file.contentType() != null && !file.contentType().isBlank()) ? file.contentType() : "application/octet-stream";
             response.setContentType(mimeType);
-            response.setHeader("Content-Disposition", "attachment; filename=\"" + filename + "\"");
+            String encodedName = java.net.URLEncoder.encode(filename, java.nio.charset.StandardCharsets.UTF_8).replace("+", "%20");
+            response.setHeader("Content-Disposition", "attachment; filename=\"" + filename + "\"; filename*=UTF-8''" + encodedName);
             response.setContentLengthLong(plaintext.length);
             response.getOutputStream().write(plaintext);
         } catch (SecurityException e) {

@@ -3,67 +3,170 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Secure Cloud Storage — Enterprise File Encryption & Sharing</title>
+    <title>Secure Cloud Storage — Zero-Trust Enterprise Data Vault</title>
     <link rel="stylesheet" href="app.css">
 </head>
 <body>
+    <!-- Navbar -->
     <header>
-        <strong>Secure Cloud Storage</strong>
+        <strong><a href="index.html">Secure Cloud Storage</a></strong>
         <nav>
-            <a href="DataOwnerLogin.jsp">Data Owner Portal</a>
-            <a href="DataUserLogin.jsp">Data User Portal</a>
-            <a href="Admin.jsp">Administrator</a>
+            <a class="nav-link" href="DataOwnerLogin.jsp">Data Owner Portal</a>
+            <a class="nav-link" href="DataUserLogin.jsp">Data User Portal</a>
+            <a class="nav-link" href="Admin.jsp">Administrator</a>
+            <a class="btn-get-started" href="DataOwnerLogin.jsp">Get Started &rarr;</a>
         </nav>
     </header>
 
-    <main>
-        <section class="hero-corporate">
+    <!-- Hero Section -->
+    <section class="hero-wrapper">
+        <div class="hero-grid">
             <div>
-                <h1>Encrypted, Access-Controlled Cloud Storage Platform</h1>
-                <p>Enterprise-grade zero-trust file storage protected with authenticated AES-256-GCM envelope encryption, owner-controlled access permissions, and a tamper-evident audit ledger.</p>
-                <div class="actions">
-                    <a class="button" href="DataOwnerLogin.jsp">Data Owner Sign In</a>
-                    <a class="button" href="DataUserLogin.jsp">Data User Sign In</a>
-                    <a class="button secondary" href="Admin.jsp">Administrator</a>
+                <div class="security-badge">
+                    <span>🛡️ Enterprise Zero-Trust Security Architecture</span>
+                </div>
+                <h1 class="hero-heading">
+                    Encrypted Cloud Vault &amp;<br>
+                    <span class="text-accent-gradient">Owner-Control</span> Platform
+                </h1>
+                <p class="hero-description">
+                    Protect sensitive files with client-side AES-256-GCM envelope encryption, owner-approved cryptographic access grants, and an append-only HMAC integrity audit chain.
+                </p>
+                <div class="hero-btn-group">
+                    <a class="btn-owner" href="DataOwnerLogin.jsp">☁️ Data Owner Portal &rarr;</a>
+                    <a class="btn-user" href="DataUserLogin.jsp">🔑 Data User Portal &rarr;</a>
+                    <a class="btn-admin" href="Admin.jsp">🛡️ Administrator &rarr;</a>
                 </div>
             </div>
-            <div>
-                <img src="images/cloud_vault_hero.png" alt="Secure Data Vault" class="hero-img">
-            </div>
-        </section>
-
-        <h2 style="margin-bottom: 1.25rem;">Enterprise Access Portals</h2>
-
-        <section class="portal-grid">
-            <div class="portal-card">
-                <div class="portal-icon">📤</div>
-                <h3>Data Owner Portal</h3>
-                <p>Upload files with zero-trust AES-256-GCM envelope encryption, manage access requests, and approve/deny user permissions.</p>
-                <div class="actions">
-                    <a class="button" href="DataOwnerLogin.jsp">Owner Sign In</a>
-                    <a class="button secondary" href="DataOwnerRegister.jsp">Register Owner</a>
+            <div class="hero-visual-container">
+                <img src="images/hero_3d_illustration.png" alt="Cloud Vault 3D Security Illustration" class="hero-3d-img-large">
+                
+                <!-- Floating Glassmorphism Card Overlaid on Left-Bottom Corner -->
+                <div class="hero-overlay-card">
+                    <div class="hero-overlay-icon">🔒</div>
+                    <div>
+                        <div class="hero-overlay-title">AES-256-GCM Envelope Encryption</div>
+                        <div class="hero-overlay-desc">Keys derived via 310,000 PBKDF2 iterations</div>
+                    </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="portal-card">
-                <div class="portal-icon">🔑</div>
-                <h3>Data User Portal</h3>
-                <p>Search shared cloud files, submit permission requests to file owners, and download/decrypt files once approved.</p>
-                <div class="actions">
-                    <a class="button" href="DataUserLogin.jsp">User Sign In</a>
-                    <a class="button secondary" href="DataUserRegister.jsp">Register User</a>
+    <!-- Security Metrics Section -->
+    <section class="metrics-wrapper">
+        <div class="metrics-horizontal-card">
+            <div class="metric-col">
+                <div class="metric-icon-box icon-purple">🛡️</div>
+                <div>
+                    <div class="metric-content-main">AES-256</div>
+                    <div class="metric-content-subtitle">AUTHENTICATED ENCRYPTION</div>
+                    <div class="metric-content-desc">Advanced encryption for enterprise security.</div>
                 </div>
             </div>
-
-            <div class="portal-card">
-                <div class="portal-icon">🛡️</div>
-                <h3>Administrator Portal</h3>
-                <p>Monitor platform activity, inspect account directories, and audit the cryptographic HMAC-SHA-256 integrity ledger.</p>
-                <div class="actions">
-                    <a class="button secondary" href="Admin.jsp">Admin Sign In</a>
+            <div class="metric-col">
+                <div class="metric-icon-box icon-amber">🔑</div>
+                <div>
+                    <div class="metric-content-main">310,000+</div>
+                    <div class="metric-content-subtitle">PBKDF2 ROUNDS</div>
+                    <div class="metric-content-desc">Strong key derivation for maximum protection.</div>
                 </div>
             </div>
-        </section>
-    </main>
+            <div class="metric-col">
+                <div class="metric-icon-box icon-green">✓</div>
+                <div>
+                    <div class="metric-content-main">100%</div>
+                    <div class="metric-content-subtitle">HMAC VERIFIED</div>
+                    <div class="metric-content-desc">Tamper-proof audit trail verification.</div>
+                </div>
+            </div>
+            <div class="metric-col">
+                <div class="metric-icon-box icon-blue">👤</div>
+                <div>
+                    <div class="metric-content-main">ZERO-TRUST</div>
+                    <div class="metric-content-subtitle">ARCHITECTURE</div>
+                    <div class="metric-content-desc">Owner-sovereign key management.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Access Portals Section -->
+    <section class="portal-section-wrapper">
+        <div class="portal-section-container">
+            <div class="portal-header-center">
+                <div class="portal-small-label">ACCESS PORTALS</div>
+                <h2>Select Your Enterprise Portal</h2>
+                <p>Access your role-specific dashboard to upload files, manage permissions, or audit security ledger integrity.</p>
+            </div>
+
+            <div class="portal-cards-grid">
+                <!-- Owner Card -->
+                <div class="portal-card-item">
+                    <div class="card-icon-header card-owner-icon">☁️</div>
+                    <h3>Data Owner Portal</h3>
+                    <p class="card-desc">
+                        Upload files protected with AES-256-GCM envelope encryption. Manage incoming access requests and approve or deny user permissions.
+                    </p>
+                    <div class="card-buttons-flex">
+                        <a class="btn-card-primary green-theme" href="DataOwnerLogin.jsp">Owner Sign In &rarr;</a>
+                        <a class="btn-card-secondary" href="DataOwnerRegister.jsp">Register Owner</a>
+                    </div>
+                    <div class="card-bottom-ill-container">
+                        <img src="images/owner_card_ill.png" alt="Data Owner Illustration" class="card-bottom-ill">
+                        <span class="card-overlay-badge">☁️ Owner Sovereign Control</span>
+                    </div>
+                </div>
+
+                <!-- User Card -->
+                <div class="portal-card-item">
+                    <div class="card-icon-header card-user-icon">🔑</div>
+                    <h3>Data User Portal</h3>
+                    <p class="card-desc">
+                        Search shared cloud file metadata, submit permission requests to file owners, and download &amp; decrypt files upon approval.
+                    </p>
+                    <div class="card-buttons-flex">
+                        <a class="btn-card-primary amber-theme" href="DataUserLogin.jsp">User Sign In &rarr;</a>
+                        <a class="btn-card-secondary" href="DataUserRegister.jsp">Register User</a>
+                    </div>
+                    <div class="card-bottom-ill-container">
+                        <img src="images/user_card_ill.png" alt="Data User Illustration" class="card-bottom-ill">
+                        <span class="card-overlay-badge">🔑 Cryptographic Access Grants</span>
+                    </div>
+                </div>
+
+                <!-- Admin Card -->
+                <div class="portal-card-item">
+                    <div class="card-icon-header card-admin-icon">🛡️</div>
+                    <h3>Administrator Portal</h3>
+                    <p class="card-desc">
+                        Inspect system accounts directory, monitor file activities, and run automated cryptographic checks against the HMAC audit chain.
+                    </p>
+                    <div class="card-buttons-flex">
+                        <a class="btn-card-primary blue-theme" href="Admin.jsp">Admin Sign In &rarr;</a>
+                    </div>
+                    <div class="card-bottom-ill-container">
+                        <img src="images/admin_card_ill.png" alt="Administrator Illustration" class="card-bottom-ill">
+                        <span class="card-overlay-badge">🛡️ Immutable Audit Chain</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Strip -->
+    <section class="trust-strip-wrapper">
+        <div class="trust-strip-container">
+            <div class="trust-left-main">
+                <h4>🛡️ Security by Design. Built for Trust.</h4>
+                <p>End-to-end encryption. Owner control. Verifiable integrity.</p>
+            </div>
+            <div class="trust-right-badges">
+                <span class="trust-badge-item">🔒 Client-Side Encryption</span>
+                <span class="trust-badge-item">✓ Owner Approval Required</span>
+                <span class="trust-badge-item">🛡️ Append-Only Audit Chain</span>
+            </div>
+        </div>
+    </section>
 </body>
 </html>

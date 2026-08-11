@@ -1,28 +1,28 @@
 <header>
-  <strong>Secure Cloud Storage</strong>
+  <strong><a href="${pageContext.request.contextPath}/index.html">Secure Cloud Storage</a> <span class="role-badge-pill"><c:out value="${sessionScope.role}"/></span></strong>
   <nav>
     <c:choose>
-      <c:when test="${sessionScope.role == 'OWNER'}">
-        <a href="${pageContext.request.contextPath}/owner/home">Home</a>
-        <a href="${pageContext.request.contextPath}/owner/upload">Upload</a>
-        <a href="${pageContext.request.contextPath}/owner/files">My files</a>
-        <a href="${pageContext.request.contextPath}/owner/requests">Requests</a>
+      <c:when test="${sessionScope.role == 'OWNER' || sessionScope.role == 'DATA_OWNER'}">
+        <a class="nav-link" href="${pageContext.request.contextPath}/owner/home">Dashboard</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/owner/upload">Upload File</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/owner/files">My Files</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/owner/requests">Access Requests</a>
       </c:when>
-      <c:when test="${sessionScope.role == 'USER'}">
-        <a href="${pageContext.request.contextPath}/user/home">Home</a>
-        <a href="${pageContext.request.contextPath}/user/search">Search</a>
-        <a href="${pageContext.request.contextPath}/user/requests">My requests</a>
+      <c:when test="${sessionScope.role == 'USER' || sessionScope.role == 'DATA_USER'}">
+        <a class="nav-link" href="${pageContext.request.contextPath}/user/home">Dashboard</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/user/search">Search Files</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/user/requests">My Requests & Downloads</a>
       </c:when>
       <c:when test="${sessionScope.role == 'ADMIN'}">
-        <a href="${pageContext.request.contextPath}/admin/home">Home</a>
-        <a href="${pageContext.request.contextPath}/admin/accounts?role=OWNER">Owners</a>
-        <a href="${pageContext.request.contextPath}/admin/accounts?role=USER">Users</a>
-        <a href="${pageContext.request.contextPath}/admin/audit">Integrity audit</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/admin/home">Dashboard</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/admin/accounts?role=OWNER">Owners Directory</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/admin/accounts?role=USER">Users Directory</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/admin/audit">Integrity Audit</a>
       </c:when>
     </c:choose>
-    <form class="inline" action="${pageContext.request.contextPath}/Logout" method="post">
+    <form class="inline" action="${pageContext.request.contextPath}/Logout" method="post" style="display:inline;margin:0;">
       <input type="hidden" name="csrf" value="${sessionScope.csrfToken}">
-      <button class="secondary" type="submit">Sign out</button>
+      <button class="secondary" type="submit" style="margin:0 0 0 0.5rem;padding:0.35rem 0.75rem;font-size:0.82rem;width:auto;margin-top:0;">Sign Out</button>
     </form>
   </nav>
 </header>

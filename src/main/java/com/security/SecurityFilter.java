@@ -10,9 +10,9 @@ import java.util.Set;
 
 @WebFilter("/*")
 public class SecurityFilter implements Filter {
-    private static final Set<String> PUBLIC_PAGES = Set.of(
-            "", "/", "/index.html", "/Admin.jsp", "/DataOwnerLogin.jsp", "/DataOwnerRegister.jsp",
-            "/DataUserLogin.jsp", "/DataUserRegister.jsp", "/Admin", "/Owner", "/OwnerReg", "/User", "/UserReg");
+    private static final Set<String> PUBLIC_PAGES_LOWER = Set.of(
+            "", "/", "/index.html", "/admin.jsp", "/dataownerlogin.jsp", "/dataownerregister.jsp",
+            "/datauserlogin.jsp", "/datauserregister.jsp", "/admin", "/owner", "/ownerreg", "/user", "/userreg");
     private static final Set<String> OWNER_ACTIONS = Set.of("/FileUpload", "/DeleteFile", "/Approve", "/SendKey");
     private static final Set<String> USER_ACTIONS = Set.of("/SendRequest");
 
@@ -26,7 +26,7 @@ public class SecurityFilter implements Filter {
         response.setHeader("X-Frame-Options", "DENY");
         response.setHeader("Referrer-Policy", "no-referrer");
         response.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
-        response.setHeader("Content-Security-Policy", "default-src 'self'; img-src 'self' data:; style-src 'self'; form-action 'self'; frame-ancestors 'none'; base-uri 'none'");
+        response.setHeader("Content-Security-Policy", "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; form-action 'self'; frame-ancestors 'none'; base-uri 'none'");
         response.setHeader("Cache-Control", "no-store");
         if (request.isSecure()) response.setHeader("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
 
@@ -41,7 +41,7 @@ public class SecurityFilter implements Filter {
             return;
         }
 
-        if (PUBLIC_PAGES.contains(path)) {
+        if (PUBLIC_PAGES_LOWER.contains(path.toLowerCase())) {
             chain.doFilter(request, response);
             return;
         }
@@ -60,17 +60,18 @@ public class SecurityFilter implements Filter {
     }
 
     private static boolean authorized(String path, Role role) {
-        if (path.startsWith("/admin/") || path.equals("/Adminhome.jsp") || path.equals("/DataOwnerInfo.jsp")
-                || path.equals("/DataUserInfo.jsp") || path.equals("/BlocksData.jsp")
-                || path.startsWith("/TrackData")) return role == Role.ADMIN;
-        if (path.startsWith("/owner/") || OWNER_ACTIONS.contains(path) || path.equals("/DataOwnerHome.jsp")
-                || path.equals("/UploadFile.jsp") || path.equals("/ViewOwnFiles.jsp")
-                || path.equals("/Request.jsp") || path.equals("/SendKey.jsp")) return role == Role.OWNER;
-        if (path.startsWith("/user/") || USER_ACTIONS.contains(path) || path.equals("/DataUserHome.jsp")
-                || path.equals("/SearchFile.jsp") || path.equals("/SearchResult.jsp")
-                || path.equals("/Response.jsp")) return role == Role.USER;
-        if (path.equals("/ViewData") || path.equals("/ViewData1")) return role == Role.USER || role == Role.OWNER;
-        if (path.equals("/Logout")) return true;
+        String lower = path.toLowerCase();
+        if (lower.startsWith("/admin/") || lower.equals("/adminhome.jsp") || lower.equals("/dataownerinfo.jsp")
+                || lower.equals("/datauserinfo.jsp") || lower.equals("/blocksdata.jsp")
+                || lower.startsWith("/trackdata")) return role == Role.ADMIN;
+        if (lower.startsWith("/owner/") || OWNER_ACTIONS.stream().anyMatch(a -> a.equalsIgnoreCase(path))
+                || lower.equals("/dataownerhome.jsp") || lower.equals("/uploadfile.jsp") || lower.equals("/viewownfiles.jsp")
+                || lower.equals("/request.jsp") || lower.equals("/sendkey.jsp")) return role == Role.OWNER;
+        if (lower.startsWith("/user/") || USER_ACTIONS.stream().anyMatch(a -> a.equalsIgnoreCase(path))
+                || lower.equals("/datauserhome.jsp") || lower.equals("/searchfile.jsp") || lower.equals("/searchresult.jsp")
+                || lower.equals("/response.jsp")) return role == Role.USER;
+        if (lower.equals("/viewdata") || lower.equals("/viewdata1")) return role == Role.USER || role == Role.OWNER;
+        if (lower.equals("/logout")) return true;
         return false;
     }
 
